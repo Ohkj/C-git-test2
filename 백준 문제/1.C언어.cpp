@@ -1,4 +1,4 @@
-
+﻿
 /*
 // 11816 8진수 10진수 16진수
 #pragma warning(disable:4996)
@@ -116,7 +116,7 @@ int main()
 {
 	
 	char s[100];
-	while (scanf("%10s", s) == 1) {
+	while (scanf("%10s", s) == 1) { // scanf 반환값 활용
 		printf("%s\n", s);
 	}
 	
