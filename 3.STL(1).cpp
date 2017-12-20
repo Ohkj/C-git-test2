@@ -1,4 +1,4 @@
-
+﻿
 /*
 // 10866 덱
 #pragma warning(disable:4996)
@@ -145,7 +145,7 @@ using namespace std;
 
 int main()
 {
-	list < pair<int, int>> a;
+	list < pair<int, int>> a; // 리스트 활용
 	int n;
 	scanf("%d", &n);
 	for (int i = 1; i <= n; i++) {
