@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+    int n;
 
-	return 0;
+    return 0;
 }
