@@ -1,5 +1,5 @@
 /*
-// 10867 중복빼고 정렬하기
+// 10867 중복빼고 정렬하기 set 활용
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
@@ -21,13 +21,47 @@ int main()
 		s.insert(x);
 	}
 
-	for (int a : s) {
+	for (int a : s) { // set은 자동 정렬
 		cout << a << ' ';
 	}
 
 	return 0;
 }
 **********************/
+
+/*
+// 10867 중복빼고 정렬하기 vector + unique 활용
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	vector<int> s;
+	int n, num;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> num;
+		s.push_back(num);
+	}
+	sort(s.begin(), s.end()); // vector 오름차순 정렬하고
+	s.erase(unique(s.begin(), s.end()), s.end()); //unique, erase 사용법 주의
+
+	for (int i = 0; i < s.size(); i++)
+		cout << s[i] << ' ';
+	
+	return 0;
+}
+*******************************/
 
 /*
 // 10815  숫자카드
@@ -213,7 +247,7 @@ int main()
 	}
 	cout << '<';
 	for (int i = 1; i <= n; i++) {
-		for (int j = 0; j < m - 1; j++) {
+		for (int j = 0; j < m - 1; j++) { // j 시작, 끝 인덱스 주의
 			q.push(q.front()); // 1 2 3 4 5 6 7에서 front 2개를 7뒤에 다시 push
 			q.pop(); // 기존 front 값(1,2) 삭제
 		}
@@ -303,8 +337,8 @@ int main()
 ************************/
 
 
-
-// 1181 단어정렬(***********추가 문제***********)
+/*
+// 1181 단어정렬(***********추가 문제******iterator 활용*****)
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
@@ -345,4 +379,45 @@ bool comp(const string &s1, const string &s2) { // 정렬 기준 함수 주의!!
 
 	else
 		return s1.size() < s2.size(); // 사이즈 다르면 작은게 앞
+}
+*************/
+
+
+// 1181 단어정렬(***********추가 문제******vector + unique 활용*****)
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+bool comp(const string &s1, const string &s2);
+int main()
+{
+	vector<string> v;
+	int n;
+	string str;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> str;
+		v.push_back(str);
+	}
+	sort(v.begin(), v.end(), comp);
+	v.erase(unique(v.begin(), v.end()), v.end()); // vector에서 unique 사용하여 중복 제거
+	for (int i = 0; i < v.size(); i++)
+		cout << v[i] << '\n';
+
+	return 0;
+}
+bool comp(const string &s1, const string &s2) {
+	if (s1.size() == s2.size()) {
+		return s1 < s2;
+	}
+	else
+		return s1.size() < s2.size();
 }
