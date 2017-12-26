@@ -62,6 +62,42 @@ int main()
 *******************/
 
 /*
+//10809 알파벳 찾기
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	string str;
+	cin >> str;
+	
+	for (int i = 'a'; i <= 'z'; i++) {
+		auto it = find(str.begin(), str.end(), i); // i의 인덱스 반환
+
+		if (count(str.begin(), str.end(), i) == 0) { // if(it == str.end())
+			cout << "-1" << ' ';
+		}
+
+		else
+			cout << (it - str.begin()) << ' '; // 인덱스 위치 
+	}
+	cout << '\n';
+
+	return 0;
+}
+**********************/
+
+/*
 //10810 공 넣기
 #pragma warning(disable:4996)
 #include<cstdio>
@@ -317,6 +353,228 @@ int main()
 	return 0;
 }
 ******************/
+
+/*
+//10825 국영수
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+struct Student {
+	string name;
+	int kor, eng, math;
+};
+bool comp(const Student &s1, const Student &s2);
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<Student> v(n); // 구조체 Student형으로 vector 생성하고 크기 지정. 크기 지정해야 에러 안남
+	for (int i = 0; i < n; i++) {
+		cin >> v[i].name >> v[i].kor >> v[i].eng >> v[i].math; // 개개인마다 이름, 점수 입력
+	}
+
+	sort(v.begin(), v.end(), comp);
+
+	for (int i = 0; i < n; i++) {
+		cout << v[i].name << '\n';
+	}
+
+	return 0;
+}
+
+bool comp(const Student &s1, const Student &s2) {
+	if (s1.kor > s2.kor) {
+		return true;
+	}
+	else if (s1.kor == s2.kor) {
+		if (s1.eng < s2.eng) {
+			return true;
+		}
+		else if (s1.eng == s2.eng) {
+			if (s1.math > s2.math) {
+				return true;
+			}
+			else if (s1.math == s2.math) {
+				return s1.name < s2.name;
+			}
+		}
+	}
+	return false;
+}
+
+
+//국어 점수가 감소하는 순서로
+//국어 점수가 같으면 영어 점수가 증가하는 순서로
+//국어 점수와 영어 점수가 같으면 수학 점수가 감소하는 순서로
+//모든 점수가 같으면 이름이 사전 순으로 증가하는 순서로
+
+
+*******************/
+
+/*
+//10814 나이순 정렬
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+struct person {
+	int age;
+	string name;
+};
+bool comp(const person &age1, const person &age2);
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	//vector<pair<int, string>> v;
+	vector<person> v(n);
+	for (int i = 0; i < n; i++) {
+		cin >> v[i].age >> v[i].name;
+		//cin >> age >> name;
+		//v.push_back(make_pair(age, name)); // vector에 pair로 쌍만들어서 push 하는 방법도 알아 둘것. 아래도 같은 방식
+		//v.push_back(pair<int, string>(age, name));
+	}
+	stable_sort(v.begin(), v.end(), comp); // 두번째 기준을 입력받은 순서로 정렬해야하므로 stable_sort 사용
+	// stable_sort는 첫번째 원소가 같고 두번째 원소 정렬시 그냥 정렬하지 않고 입력받은 순서대로 정렬함.
+	
+	for (int i = 0; i < v.size(); i++)
+		cout << v[i].age << ' ' << v[i].name << '\n';
+
+	return 0;
+}
+
+
+bool comp(const person &age1, const person &age2)
+{
+	return age1.age < age2.age;
+}
+********************/
+
+/*
+//10817 세수
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	vector<int> v;
+	//for (int i = 1; i <= a.size(); i++) {
+	int a, b, c;
+	cin >> a >> b >> c;
+	v.push_back(a); v.push_back(b); v.push_back(c);
+
+	sort(v.begin(), v.end());
+
+	cout << v[1] << '\n';
+
+	return 0;
+}
+***************/
+
+/*
+//10818 최소, 최대
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<int> v;
+	for(int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		v.push_back(a); 
+	}
+	sort(v.begin(), v.end());
+	int maxnum = v[0];
+	int minnum = v[v.size() - 1];
+	cout << maxnum << ' ' << minnum << '\n';
+
+	return 0;
+}
+*******************/
+
+/*
+//10819 차이를 최대로(순열 : next_permutation 사용, 사용법 숙지!!!!
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<list>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<int> v;
+	int maxnum = -99;
+	int sum;
+	for(int i = 0; i < n; i++) {
+		int num;
+		cin >> num;
+		v.push_back(num); 
+	}
+	sort(v.begin(), v.end());
+	do {
+		sum = 0; // sum 위치 중요. 한번 돌면 초기화 해야 누적 안됨
+		for (int i = 0; i < n-1; i++) {
+			sum += abs(v[i] - v[i+1]);
+		}
+		maxnum = max(sum, maxnum);
+	} while (next_permutation(v.begin(), v.end())); // 순열 모든 조합에서 최대값 찾음. do~while 사용
+
+	cout << maxnum << '\n';
+
+	return 0;
+}
+****************/
 
 
 
