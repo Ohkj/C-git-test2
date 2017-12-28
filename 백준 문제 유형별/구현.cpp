@@ -1,6 +1,6 @@
 
 /*
-//1924 2007년 
+//1924 2007년!
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
