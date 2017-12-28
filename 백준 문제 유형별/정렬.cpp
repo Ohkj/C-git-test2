@@ -1,5 +1,3 @@
-﻿
-/*
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
@@ -35,4 +33,4 @@ int main()
 	
 	return 0;
 }
-***********/
+/*http://jeonggyun.tistory.com/19 참고*/

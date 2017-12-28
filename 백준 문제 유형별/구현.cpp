@@ -125,3 +125,49 @@ int main()
 }
 
 **************/
+
+/*
+//2490 윷놀이
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int n;
+	int cnt = 0;
+	vector<int> v(4); // 윷 개수만큼 크기 지정
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			cin >> v[j]; // 0 ~ 3번째 인덱스에 입력값 저장. 배열 형태로 입력할 것
+			v.push_back(v[j]);
+			if (v[j] == 1) {
+				cnt++;
+			}
+		}
+			if (cnt == 3)
+				cout << "A" << '\n';
+			else if (cnt == 2)
+				cout << "B" << '\n';
+			else if (cnt == 1)
+				cout << "C" << '\n';
+			else if (cnt == 0)
+				cout << "D" << '\n';
+			else if (cnt == 4)
+				cout << "E" << '\n';
+
+			cnt = 0;
+	}
+	return 0;
+}
+*********************/
+
+
