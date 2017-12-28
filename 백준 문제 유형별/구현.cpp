@@ -127,7 +127,7 @@ int main()
 **************/
 
 /*
-//2490 윷놀이!
+//2490 윷놀이!!
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
