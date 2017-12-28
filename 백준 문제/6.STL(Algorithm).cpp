@@ -1,6 +1,6 @@
-
+﻿
 /*
-//10807 개수세기
+//10807 개수세기!
 #pragma warning(disable:4996)
 #include<cstdio>
 #include<algorithm>
