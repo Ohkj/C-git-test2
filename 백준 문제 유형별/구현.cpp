@@ -368,3 +368,150 @@ int main()
 }
 *****************/
 
+/*
+//2563 색종이!!!!!!!!!!!!!!!!!!!!!!!!
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+using namespace std;
+int arr[100][100]; // !!!!!!!!!!!!!전역으로 선언 -> 0으로 초기화. C++에서 초기화 안하면 cnt 0 출력됨
+int main()
+{
+	int n,x,y;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> x >> y;
+		for (int a = x; a < x + 10; a++) { // x,y 좌표 크기의 사각형을 돌면서
+			for (int b = y; b < y + 10; b++) {
+				arr[a][b]++; // 격자 하나를 플러스
+			}
+		}
+	}
+	int cnt = 0;
+	for (int b = 0; b < 100; b++) { // 전체 도화지 100 x 100 사이즈에서 
+		for (int a = 0; a < 100; a++) {
+			if (arr[b][a] >= 1) // 1이상으로 플러스 된 것(x,y좌표 사각형의 격자 하나)의 개수를 센다.
+				cnt++;
+		}
+	}
+	cout << cnt << '\n';
+
+	return 0;
+}
+*****************/
+
+/*
+//10984 내 학점을 구해줘
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+//#include<math.h>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> // 헤더파일 선언
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int T, n, c, csum = 0;
+	double g;
+	double sum = 0;
+	cin >> T;
+	while (T--) {
+		cin >> n;
+		for (int i = 0; i < n; i++) {
+			cin >> c >> g;
+			csum += c;
+			sum += (c * g);
+		}
+			printf("%d %.1f\n", csum, sum / csum); // 소수 둘 째자리에서 반올림 출력 형식 %.1f
+			csum = 0;
+			sum = 0.0;
+	}
+
+	return 0;
+}
+************/
+
+/*
+//5597 과제 안 내신 분?
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int n;
+	int arr[31] = { 0, };
+	for (int i = 0; i < 28; i++) {
+		cin >> n;
+		arr[n] = 1; // 입력한 숫자를 arr의 인덱스로 설정하고 이 값을 1로 바꿈
+	}
+	for (int i = 1; i <= 30; i++) {
+		if (arr[i] == 0) // 0이면 입력하지 않은 숫자
+			cout << i << '\n';
+	}
+
+	return 0;
+}
+****************/
+
+
+/*
+//1159 농구경기!!!!!!!!!!!!!!!!!!!!
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+using namespace std;
+int arr[26]; // 전역변수, 배열 초기화
+char ch[30];
+int main()
+{
+	int n, cnt = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> ch;
+		arr[ch[0] - 97]++; // 아스키코드값 이용. 입력한 문자에서 97(a)를 뺀 것을 인덱스로 하고 이것을 플러스
+	}
+
+	for (int i = 0; i < 26; i++) {
+		if (arr[i] >= 5) {
+			printf("%c", i + 97); // i+97을 하게되면 배열 0번째 인덱스부터 5이상이면 출력
+			cnt++;
+		}
+	}
+	if (cnt == 0)
+		cout << "PREDAJA" << '\n';
+
+	return 0;
+}
+**************/
