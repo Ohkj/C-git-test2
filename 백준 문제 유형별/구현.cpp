@@ -515,3 +515,94 @@ int main()
 	return 0;
 }
 **************/
+
+/*
+//5532 방학숙제
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+using namespace std;
+int arr[26];
+char ch[30];
+int main()
+{
+	int L, A, B, C, D;
+	int kor, math;
+	cin >> L >> A >> B >> C >> D;
+	if (A % C != 0) {
+		kor = (A / C) + 1;
+	}
+	if ((A % C == 0)) {
+		kor = A / C;
+	}
+	if (B % D != 0) {
+		math = (B / D) + 1;
+	}
+	if ((B % D == 0)) {
+		math = B / D;
+	}
+	int maxnum = max(kor, math); 
+	cout << L - maxnum << '\n';
+
+	return 0;
+}
+****************/
+
+/*
+//2851 슈퍼마리오!!!!!!!!!!!!!!!!!!!
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+using namespace std;
+
+int main()
+{
+	int n, result;
+	int sum = 0;
+	int now, next;
+	vector<int> v;
+	for (int i = 0; i < 10; i++) {
+		cin >> n;
+		v.push_back(n);
+	}	
+	    result = v[0];
+
+		if (result == 100) { // 처음 값이 100이면 출력하고 종료
+			cout << "100" << '\n';
+			return 0;
+		}
+		for (int i = 1; i < v.size(); i++) {
+					
+			now = result;
+			next = result + v[i];
+
+			now = abs(100 - now);
+			next = abs(100 - next);
+
+			if (now >= next) {
+				result += v[i];
+			}
+			else
+				break;
+		}
+	cout << result << '\n';
+
+	return 0;
+}
+*************/
