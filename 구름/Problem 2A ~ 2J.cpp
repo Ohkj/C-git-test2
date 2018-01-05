@@ -229,7 +229,7 @@ bool is_prime(int n)
 	if (n % 2 == 0)
 		return false;
 
-	for (long long i = 3; i*i <= n; i += 2) // for문 i*i <= n; i+=2 주의!!!!!!!!!!!!!!!!!!!
+	for (long long i = 3; i*i <= n; i += 2) // for문 i*i <= n; i+=2 주의(i++도 가능)!!!!!!!!!!!!!!!!!!!
 	{
 		if (n % i == 0) {
 			return false;
@@ -239,6 +239,25 @@ bool is_prime(int n)
 	return true;
 	
 }
+
+//////////////////////// 코드 짧은 버전(for문 조건 다름)
+//bool is_prime(int n)
+//{ 
+//	if (n <= 1)
+//		return false;
+//	
+//	for(long long i = 2; i*i <= n; i++) // i가 루트n보다 작을 때(시간복잡도 고려) : 양변 제곱
+//	{
+//		if (n % i == 0) {
+//			return false;
+//		}
+//	}
+//
+//	return true;	
+//}
+/////////////////////
+
+
 void test_case()
 {
 	int n;
@@ -294,19 +313,19 @@ int main() {
 	}
 	int mini = 1234567890;
 	int cnt = 0;
-	for (int i = 0; i < n; i++) {
-		for(int j = i+1; j < n; j++){
+	for (int i = 0; i < n; i++) { // 1과 2, 3 ... n까지
+		for(int j = i+1; j < n; j++){ // 2와 3, 4, 5 ... n까지   // 1에서 2까지 거리와 2에서 1까지 거리는 중복이므로 j  시작을 i+1
 			int dx = v[i].first - v[j].first; // x좌표 길이
 			int dy = v[i].second - v[j].second;
 			
 			int result = (dx * dx) + (dy * dy);
 			
-			if(result < mini){
+			if(result < mini){ // 거리가 result인 쌍이 처음 등장
 				mini = result;
-				cnt = 1;
+				cnt = 1; // 처음 등장하면 갱신
 			}
 			
-			else if(result == mini){
+			else if(result == mini){ // 뒤에 나온 값이 현재 최소 거리와 같으면
 				cnt++;
 			}
 	
@@ -320,3 +339,236 @@ int main() {
 	return 0;
 }
 ******************/
+
+/*
+//문제2G - 버블정렬 구현하기
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	vector<int> v;
+	for(int i = 0; i < n; i++)
+	{
+			int num;	
+			cin >> num;
+			v.push_back(num);
+	}
+	
+	for(int i = 0; i < v.size(); i++){
+		for(int j = i+1; j < v.size(); j++){
+			if(v[i] > v[j]){
+					int tmp;     // swap(v[i], v[j]); --> swap( ) STL 사용해도 됨.
+					tmp = v[i];
+					v[i] = v[j];
+					v[j] = tmp;
+			}
+		}
+	}
+
+////////////////이 식이 시간복잡도 고려
+//	for(int i = 0; i < v.size(); i++){
+//		for(int j = 0; j < v.size() -i -1; j++){ // 처음 for문 돌면 가장 마지막에는 가장 큰 값이 저장되고
+//		                                         // 그 다음은 가장 큰 값 앞까지 비교하면 됨
+//			if(v[j] > v[j+1]){
+//					int tmp;     // swap(v[j], v[j+1]); --> swap( ) STL 사용해도 됨.
+//					tmp = v[j];
+//					v[j] = v[j+1];
+//					v[j+1] = tmp;
+//			}
+//		}
+//	}
+/////////////////
+
+
+	for(int i = 0 ; i < v.size(); i++)
+		cout << v[i] << ' ';
+
+  return 0;
+}
+***********/
+
+/*
+//문제2H - 픽셀수 세기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include <iostream>
+#include<cstdio>
+using namespace std;
+
+void testcase()
+{
+	long long r; // long long 으로 해야 범위 입력
+	cin >> r;
+	long long sum = 0; // 칸의 수, int형 범위 넘어감
+	long long h = r; // 사각형 높이를 h
+	for(long long x = 0; x < r; x++){
+			while(x*x + (h-1)*(h-1) >= r*r){
+				// 왼쪽 좌표가 x인 기둥의 넓이를 구해서 합산
+				// h는 이전까지 사용했던 기둥의 높이
+				// (x, h-1)이 원에 포함될 때까지 h를 낮춘다
+					h--;
+			}
+		sum += h;
+	}
+	cout << sum*4 << '\n';
+}
+
+int main() {
+	int n, r;
+	cin >> n;
+
+	for(int i = 0; i < n; i++){
+			cout << "#" << i+1 << '\n';
+		  testcase(i);
+	}
+  return 0;
+}
+**********************/
+
+
+/*
+//문제2I - 정주행(정렬 사용 버전 내꺼)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+
+int main() {
+	int n;
+	bool flag = true;
+	cin >> n;
+	vector<int> v;
+	for(int i = 0; i < n; i++){
+		int num;
+		cin >> num;
+		v.push_back(num);
+	}
+	sort(v.begin(), v.end());
+	
+	for(int i = 0; i+1 < v.size(); i++){
+		if(v[i+1] - v[i] >= 2){
+			flag = false;
+		}
+	}
+	if(flag == true)
+		cout << "YES";
+	else
+		cout << "NO";
+
+  return 0;
+}
+***************/
+
+/*
+//문제2I - 정주행
+// 정렬 안하고 시간복잡도 빠름 // 모기업에 비슷한 개념 출제됨
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+	
+int main() {
+	int n;
+	cin >> n;
+	vector<int> v(n);
+	for(int i = 0; i < v.size(); i++){
+		cin >> v[i];	
+	}
+
+	int maxn = v[0];
+	int minn = v[0];
+	
+	for(int i = 0; i < v.size(); i++){
+		if(maxn < v[i])
+			maxn = v[i]; // 배열에서 최대값
+		if(minn > v[i])
+			minn = v[i]; // 배열에서 최소값
+	}
+	if(maxn - minn == v.size()-1) // 최대값 - 최소값이 전체개수-1과 같으면 YES // 1 x x x 5에서 1이 최소 5가 최대면 x에는                              //   6이나 -1과 같은 숫자는 못들어감
+		cout << "YES";
+	else
+		cout << "NO";
+
+  return 0;
+}
+****************/
+
+/*
+//문제2J - 승부조작!!!!!!!!!!!!!!!!!!!!슬라이딩 윈도우 개념!!!!!!!!!!!!!!!
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+
+int main() {
+	int n, k;
+	vector<int> v;
+	cin >> n >> k;
+	for (int i = 0; i < n; i++) {
+		int num;
+		cin >> num;
+		v.push_back(num);
+	}
+	int cnt = 0;
+	int sum = 0;
+	for(int i = 0; i < n; i++){
+			// i는 윈도우의 가장 오른쪽칸 번호
+		 sum += v[i];
+		if(i >= k){
+			// i >= k이면 윈도우에 k개가 넘는 수가 존재하므로 가장 처음칸 값을 뺀다
+			// 1 2 3 4에서 1 / 1+2 / 1+2+3 - 1
+			sum = sum - v[i-k];
+		}
+		if(i > k-1){
+			//모든 윈도우에 대하여
+			if(sum % 2 == 0){
+					cnt++;
+					break;
+			}
+		}
+	}
+		
+	if (cnt > 0)
+		cout << "YES" << '\n';
+
+	else
+		cout << "NO" << '\n';
+			
+	return 0;
+}
+******************/
+
