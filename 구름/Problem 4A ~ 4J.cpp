@@ -174,7 +174,7 @@ int main() {
 *********************/
 
 
-
+/*
 //문제4E - 소인수 분해
 #include<cstdio>
 #include<algorithm>
@@ -219,3 +219,109 @@ int main() {
 		
   return 0;
 }
+**************/
+
+
+/*
+//문제4F = 소수 판별(에라토네스의 체)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+int isprime[1000001]; // 값이 0이면 소수가 아니고 1이면 소수
+int main() {
+	isprime[1] = 0;
+	for(int i=2; i <=1000000; i++){
+		isprime[i] = 1;	
+	}
+	for(int p=2; p <= 1000000; p++){
+		if(isprime[p] == 0) continue;
+		for(long long m=(long long)p*p; m <= 1000000; m+=p){ // p의 배수들을 전부 소수가 아니라고 체크, p+=m 만큼 건너뜀
+			isprime[m] = 0;	
+		}
+	}
+	
+	int n;
+	cin >> n;
+	int cnt = 0;
+	for(int i = 0; i < n; i++){
+		cout << "Case #" << i+1 << ":" << '\n';
+		int l,r;
+		cin >> l >> r;
+		for(int j=l; j <= r; j++){
+			if(isprime[j] == 1){
+					cnt++;
+			}
+		}
+		cout << cnt << '\n';
+		cnt = 0;
+	}
+		
+  return 0;
+}
+****************/
+
+
+/*
+//문제4G - 배열흔들기(내코드, VS에서는 잘 돌아감. 구름에서는 에러)
+#pragma warning(disable:4996)
+#include<cstdio>
+#include<algorithm>
+#include<vector>
+#include<iostream>
+#include<map>
+#include<set>
+#include<queue>
+#include<string>
+#include<string.h> 
+#include<functional>
+#include<cmath>
+using namespace std;
+
+int main() {
+	int n, m;
+	cin >> n >> m;
+	vector<int> v;
+	vector<int> v2;
+	for(int i = 0; i < n; i++){
+		int data;
+		cin >> data;
+		v.push_back(data);
+		v2.push_back(data);
+	}
+	for(int i = 0; i < m; i++){
+		int num;
+		int order;
+		cin >> num;
+		if(num != 3){
+			cin >> order;	
+		}
+		
+		
+		if(num == 0){
+			cout << v[order] << '\n';	
+		}
+		else if(num == 1){
+			for(int i = 0; i < order; i++)
+				rotate(v.begin(), v.begin()+order, v.end());	
+		}
+		else if(num == 2){
+				for(int i = 0; i < order; i++)
+				rotate(v.rbegin(), v.rbegin()+order, v.rend());
+		}
+		else if(num == 3){
+			for(int i = 0; i < v2.size(); i++){
+					v[i] = v2[i];
+			}
+		}
+	}
+	
+  return 0;
+}
+******************/
