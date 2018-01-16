@@ -325,3 +325,105 @@ int main() {
   return 0;
 }
 ******************/
+
+
+/*
+//문제4H - 카잉달력(영상 코드 이상..ACM)
+#include <iostream>
+
+using namespace std;
+
+void testcase()
+{
+	int n,m,x,y;
+	cin >> n >> m >> x >> y; // 10 12 3 9 입력
+	int flag = -10;
+	int k = 1;
+	//int answer = -1;
+	
+	y=k;
+	if(y > m || x > n){
+		cout << "-1" << '\n';
+		return;
+	}
+	for(k = y; k <= m*n; k += m){ 
+			int nx = (k-1)%n+1; // (13-1)%10+1 = 3
+			int ny = (k-1)%m+1; // 예를 들어 13번째 해의 <x,y>에서 y 값: (13-1)%12+1 = 1
+			// 13번째 해의 <x,y>값은 <3,1>이 됨
+	///	cout << "nx, ny = " << nx << ' ' << ny << '\n';
+			if( nx == x && ny == y){
+				flag = 1;
+				//answer = k;
+				break;
+			}
+	}
+	
+	
+	if(flag == -1){
+		cout << "-1" << '\n';
+	}
+	else{
+		cout << k << '\n';	
+	}
+}
+
+int main() {
+	int tc;
+	cin >> tc;
+	for(int i = 0; i < tc; i++){
+		testcase();	
+	}
+	
+  return 0;
+}
+************/
+
+
+/*
+//문제4I - 골드바흐의 추측!!!!!!!!!!!!!!!!!!!!
+#include <iostream>
+
+using namespace std;
+
+int arr[1000001];
+void testcase(){
+	int num;
+	cin >> num;
+	int flag = -1;
+	int firstnum, secondnum;
+	for(int a = 3; a <= num; a++){
+			if(arr[a] == 1){ // a가 소수이고
+				int b = num - a; // a + b = num에서 b = num - a
+				if(arr[b] == 1){ // b도 소수이면
+					firstnum = a;
+					secondnum = b;
+					flag = 1; // 답 확정
+					break;
+				}
+			}
+		}
+	cout << num << " = " << firstnum << " + " << secondnum << '\n';
+}
+
+int main() {
+	arr[1] = 0; // 1은 소수 아님
+	for(int i = 2; i <= 1000000; i++){
+			arr[i] = 1; // 초기화
+	}
+	for(int i = 2; i*i <= 1000000; i++){ // 에러토네스의 체 활용.
+		if(arr[i] == 0) continue;
+		for(int j = i*i; j <= 1000000; j+=i)
+			arr[j] = 0;
+	}
+	
+	int tc;
+	cin >> tc;
+	for(int i = 0; i < tc; i++){		
+		cout << "Case #" << i+1 << ":" << '\n';
+		testcase();
+	}
+  return 0;
+}
+*****************/
+
+
