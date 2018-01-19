@@ -427,3 +427,51 @@ int main() {
 *****************/
 
 
+/*
+//문제4J - 공약수 게임
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int cnt[1000001];
+vector<int> fact(int n)
+{
+	vector<int> ret;
+	for(long long d = 2; d*d <= n; d++){
+		while(n % d == 0)
+		{			
+			ret.push_back(d);
+			n /= d;
+		}
+	}
+	if(n > 1){
+		ret.push_back(n);
+	}
+	return ret;
+}
+
+int main() {
+	int n;
+	cin >> n;
+	for(int i = 0; i < n; i++){
+		int num;
+		cin >> num;
+		vector<int> v = fact(num);
+		for(int j = 0; j < v.size(); j++){
+			int p = v[j];
+			cnt[p]++;
+		}
+	}
+		int answer = 1;
+		for(int p = 1; p<=1000000; p++){
+			if(cnt[p] == 0) continue;
+			int 	result = cnt[p] / n;
+			for(int i = 0; i < result; i++){
+					answer = answer * p;
+			}
+		}
+		cout << answer << '\n';
+	
+  return 0;
+}
+****************/
