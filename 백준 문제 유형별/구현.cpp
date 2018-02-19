@@ -606,3 +606,88 @@ int main()
 	return 0;
 }
 *************/
+
+/*
+//8320 직사각형을 만드는 방법
+#include <cstdio>
+#include<algorithm>
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	int cnt = 0;
+	for(int i = 1; i <=n; i++){
+		for(int j = i; i*j <= n; j++){ 1*1 1*2 ...1*6, 2*2 2*3..
+			cnt++;	
+		}
+	}
+	cout << cnt;
+	
+  return 0;
+}
+**********************/
+
+/*
+//5576 콘테스트
+#include <cstdio>
+#include<algorithm>
+#include<iostream>
+#include<vector>
+#include<functional>
+using namespace std;
+int main() {
+	vector<int> v;
+	vector<int> v2;
+	int num;
+	for(int i = 1; i <= 10; i++){
+		cin >> num;
+		v.push_back(num);	
+	}
+	sort(v.begin(), v.end(), greater<int>());
+	int sum = 0;
+	sum += v[0]+v[1]+v[2];
+	
+	for(int i = 11; i <= 20; i++){
+		cin >> num;
+		v2.push_back(num);
+	}
+	sort(v2.begin(), v2.end(), greater<int>());
+	int sum2 = 0;
+	sum2 += v2[0]+v2[1]+v2[2];
+	
+	cout << sum << ' ' << sum2;
+	
+	
+  return 0;
+}
+******************/
+
+/*
+//5032 탄산음료
+#include <cstdio>
+#include<algorithm>
+#include<iostream>
+#include<vector>
+#include<functional>
+using namespace std;
+int main() {
+	int e,f,c;
+	cin >> e >> f >> c; // 9 1 3일 경우 빈병9+1개로 새거 3개 교환후 새거3개를 마시면 다시 빈병3개가 되고 이거 가지고 다시 새거
+	// 1개 교환 : 총4개
+	int result = e+f;
+	int sum = 0;
+	while(1)
+	{
+		if(result < c)
+			break;
+		sum += result / c;
+		result = result%c + result/c;
+	}
+	cout << sum;
+	
+  return 0;
+}
+
+***************/
